@@ -290,7 +290,7 @@ Mobil
 ════════════════════════════════ */
 #Mobil { background: var(--bg); }
 /* use flexbox so cards can be centered when row not full */
-.cars-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; padding: 0; }
+.cars-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding: 0; }
 .car-card {
   flex: 0 1 260px;
   border-radius: var(--radius); overflow: hidden;
@@ -503,12 +503,12 @@ RESPONSIVE
 }
 @media (max-width: 600px) {
 section { width: 100%; padding: 60px 16px; }
-.cars-grid { gap: 12px; }
-.motors-grid { gap: 12px; }
-.trips-grid { gap: 12px; }
-.car-card { flex: 0 1 calc(50% - 6px); }
-.motor-card { flex: 0 1 calc(50% - 6px); }
-.trip-card { flex: 0 1 calc(50% - 6px); }
+.cars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; justify-content: unset; }
+.motors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; justify-content: unset; }
+.trips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; justify-content: unset; }
+.car-card { flex: unset; }
+.motor-card { flex: unset; }
+.trip-card { flex: unset; }
 .footer-inner { grid-template-columns:1fr; gap:24px; }
 .testi-grid { grid-template-columns:1fr 1fr; }
 .hero-float-card { display:none; }
@@ -523,12 +523,12 @@ section { width: 100%; padding: 60px 16px; }
 @media (max-width: 420px) {
 .features-grid { grid-template-columns:1fr; }
 .testi-grid { grid-template-columns:1fr; }
-.car-card { flex: 0 1 calc(100% - 16px); }
-.motor-card { flex: 0 1 calc(100% - 16px); }
-.trip-card { flex: 0 1 calc(100% - 16px); }
-.cars-grid { gap: 16px; }
-.motors-grid { gap: 16px; }
-.trips-grid { gap: 16px; }
+.cars-grid { grid-template-columns: 1fr; }
+.motors-grid { grid-template-columns: 1fr; }
+.trips-grid { grid-template-columns: 1fr; }
+.car-card { flex: unset; }
+.motor-card { flex: unset; }
+.trip-card { flex: unset; }
 .hero-title { font-size: 2rem; }
 .hero-btns { flex-direction: column; width: 100%; }
 .btn-primary, .btn-ghost { width: 100%; }
@@ -548,7 +548,7 @@ section { width: 100%; padding: 60px 16px; }
 .trips-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 20px;
   margin-top: 18px;
 }
@@ -562,7 +562,7 @@ section { width: 100%; padding: 60px 16px; }
 .motors-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 24px;
   margin-top: 18px;
 }
@@ -876,15 +876,22 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 <label>Nomor HP / WhatsApp <span>*</span></label>
 <input class="form-input" type="tel" id="f-hp" placeholder="Contoh: 08123456789" required>
 </div>
-<!-- Pilih Mobil -->
+<!-- Pilih Mobil/Motor -->
 <div class="form-group">
-<label>Pilih Mobil <span>*</span></label>
+<label>Pilih Mobil / Motor <span>*</span></label>
 <select class="form-select" id="f-mobil">
-<option value="">-- Pilih Mobil --</option>
-<option value="Toyota Avanza (Rp 350.000/hari)">Toyota Avanza — Rp 350.000/hari</option>
-<option value="Toyota Innova (Rp 500.000/hari)">Toyota Innova — Rp 500.000/hari</option>
-<option value="Honda HR-V (Rp 450.000/hari)">Honda HR-V — Rp 450.000/hari</option>
-<option value="Mitsubishi Xpander (Rp 400.000/hari)">Mitsubishi Xpander — Rp 400.000/hari</option>
+<option value="">-- Pilih Armada --</option>
+<optgroup label="MOBIL">
+<option value="Rush/Terios 2024-2026 (5 Kursi)">Rush/Terios 2024-2026 — 5 Kursi</option>
+<option value="Suzuki Ertiga Matic 2017 (7 Kursi)">Suzuki Ertiga Matic 2017 — 7 Kursi</option>
+<option value="Suzuki XL7 2024 Manual/Matic (7 Kursi)">Suzuki XL7 2024 — 7 Kursi</option>
+<option value="Avanza/Xenia 2017-2019 Manual/Matic (7 Kursi)">Avanza/Xenia 2017-2019 — 7 Kursi</option>
+<option value="Avanza/Xenia New 2024-2026 Manual/Matic (7 Kursi)">Avanza/Xenia New 2024-2026 — 7 Kursi</option>
+<option value="Innova Reborn 2.4G 2024-2026 Solar Manual/Matic (8 Kursi)">Innova Reborn 2024-2026 — 8 Kursi</option>
+</optgroup>
+<optgroup label="MOTOR">
+<option value="Honda Vario 2025 (2 Penumpang)">Honda Vario 2025 — 2 Penumpang</option>
+</optgroup>
 </select>
 </div>
 <!-- Supir -->
