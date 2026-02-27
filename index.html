@@ -283,9 +283,9 @@ Mobil
 /* Desktop: Flexbox centered */
 .cars-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; padding: 0; }
 .car-card {
-flex: 0 1 260px; /* Fixed basis for centering */
+flex: 0 1 260px;
 width: 100%;
-max-width: 320px; /* Prevent stretching too wide */
+max-width: 320px;
 border-radius: var(--radius); overflow: hidden;
 background: var(--bg-card); border: 1px solid var(--border);
 box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s, border-color .25s;
@@ -425,7 +425,7 @@ text-decoration:none; color:inherit; transition:all .2s;
 .kontak-map { border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--border); }
 .map-placeholder {
 width:100%; height:340px; background:var(--bg-card);
-display:flex; flex-direction:column; align-items:center;justify-content:center;
+display:flex; flex-direction:column; align-items:center; justify-content:center;
 gap:12px;
 }
 .map-iframe-wrapper { position:relative; width:100%; padding-bottom:75%; height:0; overflow:hidden; }
@@ -504,54 +504,63 @@ RESPONSIVE (PERBAIKAN UTAMA)
     }
 }
 
-/* Mobile Standard (Hingga 600px) - DIPAKSA 2 KOLOM */
+/* Mobile Standard (Hingga 600px) - DIPAKSA 2 KOLOM & JARAK RAPAT */
 @media (max-width: 600px) {
-section { width: 100%; padding: 60px 12px; }
-
-/* GRID CARD MOBILE: SELALU 2 KOLOM (PENTING) */
-.cars-grid, .motors-grid, .trips-grid, .features-grid, .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* PAKSA 2 KOLOM */
-    gap: 12px;
-    justify-content: center;
-}
-
-/* Reset width card agar pas di grid */
-.car-card, .motor-card, .trip-card, .feature-card, .testi-card {
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-}
-
-/* PERKECIL FONT AGAR MUAT DI 2 KOLOM */
-.car-body h3, .motor-body h3 { font-size: 0.95rem; }
-.trip-card h3 { font-size: 0.95rem; }
-.feature-card h3 { font-size: 0.95rem; }
-.car-body, .motor-body, .trip-card, .feature-card { padding: 12px; }
-.car-specs span, .motor-specs span { font-size: 0.7rem; }
-.trip-card p { font-size: .8rem; }
-
-.footer-inner { grid-template-columns:1fr; gap:24px; }
-.hero-float-card { display:none; }
-.hero-stats { gap:20px; }
-.stat-num { font-size:1.5rem; }
-.form-wrapper { padding: 32px 20px; }
-.form-grid { grid-template-columns: 1fr; }
-.form-group.full { grid-column: 1; }
-.hero-title { font-size: 2.2rem; }
-}
-
-/* Mobile Kecil (Hingga 380px) - TETAP 2 KOLOM (HAPUS ATURAN 1 KOLOM) */
-@media (max-width: 380px) {
-    /* HAPUS aturan 1 kolom sebelumnya, paksa tetap 2 kolom */
+    section { width: 100%; padding: 50px 12px; } /* Kurangi padding section */
+    
+    /* GRID CARD MOBILE: SELALU 2 KOLOM */
     .cars-grid, .motors-grid, .trips-grid, .features-grid, .testi-grid {
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 8px; /* Perkecil gap sedikit agar muat */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* PAKSA 2 KOLOM */
+        gap: 8px; /* GAP KECIL */
+        justify-content: center;
     }
     
-    /* Perkecil padding & font lagi agar tidak pecah di layar sangat kecil */
-    .car-body, .motor-body, .trip-card { padding: 10px; }
+    /* Reset width card agar pas di grid */
+    .car-card, .motor-card, .trip-card, .feature-card, .testi-card {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+    
+    /* KECILKAN PADDING DALAM CARD */
+    .car-body, .motor-body { padding: 14px 12px !important; }
+    .trip-card { padding: 16px 12px !important; }
+    .feature-card { padding: 20px 16px !important; }
+    
+    /* KECILKAN FONT AGAR MUAT */
+    .car-body h3, .motor-body h3 { font-size: 0.95rem; }
+    .trip-card h3 { font-size: 0.9rem; margin-bottom: 6px; }
+    .trip-card p { font-size: 0.8rem; line-height: 1.5; }
+    .feature-card h3 { font-size: 0.95rem; }
+    .car-specs span, .motor-specs span { font-size: 0.7rem; }
+    
+    .footer-inner { grid-template-columns:1fr; gap:24px; }
+    .hero-float-card { display:none; }
+    .hero-stats { gap:20px; }
+    .stat-num { font-size:1.5rem; }
+    .form-wrapper { padding: 32px 20px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .hero-title { font-size: 2.2rem; }
+}
+
+/* Mobile Kecil (Hingga 380px) - TETAP 2 KOLOM & LEBIH RAPAT */
+@media (max-width: 380px) {
+    section { padding: 45px 10px; } /* Padding section lebih kecil */
+    
+    /* TETAP 2 KOLOM (JANGAN UBAH KE 1) */
+    .cars-grid, .motors-grid, .trips-grid, .features-grid, .testi-grid {
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 6px !important; /* GAP SANGAT KECIL */
+    }
+    
+    /* Perkecil padding & font lagi agar tidak pecah */
+    .car-body, .motor-body { padding: 12px 10px !important; }
+    .trip-card { padding: 14px 10px !important; }
+    
     .car-body h3, .motor-body h3, .trip-card h3 { font-size: 0.85rem; }
+    .trip-card p { font-size: 0.75rem; line-height: 1.4; }
     .car-specs span, .motor-specs span { font-size: 0.65rem; }
     
     .hero-title { font-size: 2rem; }
@@ -567,16 +576,20 @@ section { width: 100%; padding: 60px 12px; }
 .anim.visible { opacity:1; transform:translateY(0); }
 </style>
 <style>
-/* Trips section styles */
+/* ════════════════════════════════
+TRIPS SECTION (PERBAIKAN)
+════════════════════════════════ */
 #trips { background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
+
 /* Desktop: Flexbox centered */
 .trips-grid {
-display: flex;
-flex-wrap: wrap;
-justify-content: center; /* DIGANTI KE CENTER */
-gap: 20px;
-margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center di desktop */
+    gap: 20px;
+    margin-top: 18px;
 }
+
 .trip-card { 
     background: var(--bg-card); 
     border: 1px solid var(--border); 
@@ -586,46 +599,98 @@ margin-top: 18px;
     text-align: center; 
     flex: 0 1 220px; 
     width: 100%;
-    max-width: 280px;
+    max-width: 280px; /* Batas lebar di desktop */
 }
+
 .trip-emoji { font-size: 2.2rem; margin-bottom: 10px; }
 .trip-card h3 { font-family: 'Syne', sans-serif; margin-bottom: 8px; }
 .trip-card p { color: var(--text-sub); font-size: .95rem; line-height: 1.6; }
-/* Motor section styles */
+
+/* ════════════════════════════════
+MOTOR SECTION
+════════════════════════════════ */
 #motor { background: var(--section-alt); }
 .motors-grid {
-display: flex;
-flex-wrap: wrap;
-justify-content: center; /* DIGANTI KE CENTER */
-gap: 24px;
-margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 18px;
 }
+
 .motor-card {
-flex: 0 1 260px;
-width: 100%;
-max-width: 320px;
-border-radius: var(--radius);
-overflow: hidden;
-background: var(--bg-card);
-border: 1px solid var(--border);
-box-shadow: var(--shadow);
-transition: transform .25s, box-shadow .25s, border-color .25s;
+    flex: 0 1 260px;
+    width: 100%;
+    max-width: 320px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
 }
+
 .motor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--blue); }
 .motor-img-wrap { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: var(--blue-pale); }
 .motor-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; display: block; }
 .motor-card:hover .motor-img-wrap img { transform: scale(1.05); }
-.motor-img-placeholder {
-width: 100%; height: 100%;
-display: flex; flex-direction: column; align-items: center; justify-content: center;
-gap: 8px; color: var(--blue-light); font-size: .76rem; text-align: center; padding: 16px;
-}
 .motor-body { padding: 20px 20px 22px; }
 .motor-badge { display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; background: var(--blue-pale); color: var(--blue-light); padding: 3px 10px; border-radius: 50px; margin-bottom: 8px; }
 .motor-body h3 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--text); margin-bottom: 8px; }
 .motor-specs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
 .motor-specs span { font-size: .8rem; color: var(--text-sub); display: flex; align-items: center; gap: 5px; }
 .motor-specs span::before { content:''; width:4px;height:4px;border-radius:50%;background:var(--blue-light);flex-shrink:0; }
+
+/* ════════════════════════════════
+MOBILE TRIPS & MOTOR - 2 KOLOM (PENTING!)
+════════════════════════════════ */
+@media (max-width: 600px) {
+    /* PAKSA TRIPS GRID MENJADI 2 KOLOM */
+    .trips-grid {
+        display: grid !important; /* Override flex dengan grid */
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 kolom sama rata */
+        gap: 10px !important; /* Gap lebih kecil agar muat */
+        justify-content: center !important;
+    }
+    
+    .trip-card {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 14px 10px !important; /* Perkecil padding */
+        min-width: 0;
+    }
+    
+    .trip-emoji { font-size: 1.8rem !important; margin-bottom: 6px !important; }
+    .trip-card h3 { font-size: 0.85rem !important; margin-bottom: 4px !important; }
+    .trip-card p { font-size: 0.75rem !important; line-height: 1.4 !important; }
+    
+    /* Motor juga 2 kolom */
+    .motors-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+    
+    .motor-card {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}
+
+/* Mobile sangat kecil (380px) - Tetap 2 kolom */
+@media (max-width: 380px) {
+    .trips-grid {
+        gap: 8px !important;
+    }
+    
+    .trip-card {
+        padding: 12px 8px !important;
+    }
+    
+    .trip-emoji { font-size: 1.6rem !important; }
+    .trip-card h3 { font-size: 0.8rem !important; }
+    .trip-card p { font-size: 0.7rem !important; }
+}
 </style>
 </head>
 <body>
@@ -819,7 +884,7 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 </div>
 <div class="car-body">
 <span class="car-badge">SUV 7 Kursi</span>
-<h3>Suzuki XL7 2024 Manual/Matic</h3>
+<h3>Suzuki XL7 2024</h3>
 <div class="car-specs"><span>7 Kursi</span><span>Manual/Matic</span></div>
 </div>
 </div>
@@ -830,11 +895,10 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 </div>
 <div class="car-body">
 <span class="car-badge">MPV Ekonomis</span>
-<h3>Avanza/Xenia 2017-2019 Manual/Matic</h3>
+<h3>Avanza/Xenia 2017-2019</h3>
 <div class="car-specs"><span>7 Kursi</span><span>Manual/Matic</span></div>
 </div>
 </div>
-<!-- tambahan sampai car-8 -->
 <div class="car-card anim">
 <div class="car-img-wrap">
 <img src="assets/images/cars/car-5.jpeg" alt="Avanza/Xenia New" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -842,7 +906,7 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 </div>
 <div class="car-body">
 <span class="car-badge">MPV Terbaru</span>
-<h3>Avanza/Xenia New 2024-2026 Manual/Matic</h3>
+<h3>Avanza/Xenia New 2024-2026</h3>
 <div class="car-specs"><span>7 Kursi</span><span>Manual/Matic</span></div>
 </div>
 </div>
@@ -853,7 +917,7 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 </div>
 <div class="car-body">
 <span class="car-badge">MPV Premium</span>
-<h3>Innova Reborn 2.4G 2024-2026 Solar Manual/Matic</h3>
+<h3>Innova Reborn 2.4G 2024-2026 Solar</h3>
 <div class="car-specs"><span>8 Kursi</span><span>Manual/Matic</span></div>
 </div>
 </div>
@@ -894,17 +958,14 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 <p>Semua field bertanda <span style="color:#EF4444">*</span> wajib diisi. Setelah klik kirim, WhatsApp akan terbuka otomatis.</p>
 </div>
 <div class="form-grid" id="bookingForm">
-<!-- Nama -->
 <div class="form-group">
 <label>Nama Lengkap <span>*</span></label>
 <input class="form-input" type="text" id="f-nama" placeholder="Contoh: Budi Santoso" required>
 </div>
-<!-- No HP -->
 <div class="form-group">
 <label>Nomor HP / WhatsApp <span>*</span></label>
 <input class="form-input" type="tel" id="f-hp" placeholder="Contoh: 08123456789" required>
 </div>
-<!-- Pilih Mobil/Motor -->
 <div class="form-group">
 <label>Pilih Mobil / Motor <span>*</span></label>
 <select class="form-select" id="f-mobil">
@@ -922,7 +983,6 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 </optgroup>
 </select>
 </div>
-<!-- Supir -->
 <div class="form-group">
 <label>Dengan / Tanpa Supir <span>*</span></label>
 <select class="form-select" id="f-supir">
@@ -931,17 +991,14 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 <option value="Tanpa Supir (Lepas Kunci)">Tanpa Supir (Lepas Kunci)</option>
 </select>
 </div>
-<!-- Tanggal Mulai -->
 <div class="form-group">
 <label>Tanggal Mulai Sewa <span>*</span></label>
 <input class="form-input" type="date" id="f-tgl-mulai" required>
 </div>
-<!-- Tanggal Selesai -->
 <div class="form-group">
 <label>Tanggal Selesai Sewa <span>*</span></label>
 <input class="form-input" type="date" id="f-tgl-selesai" required>
 </div>
-<!-- Durasi cepat -->
 <div class="form-group full">
 <label>Atau Pilih Durasi Cepat</label>
 <div class="durasi-row" id="durasiRow">
@@ -952,23 +1009,19 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 <button class="durasi-btn" data-hari="30">1 Bulan</button>
 </div>
 </div>
-<!-- Lokasi Jemput -->
 <div class="form-group full">
 <label>Lokasi Penjemputan <span>*</span></label>
 <input class="form-input" type="text" id="f-lokasi" placeholder="Contoh: Jl. Sutomo No. 12, Siantar" required>
 </div>
-<!-- Tujuan -->
 <div class="form-group full">
 <label>Tujuan Perjalanan</label>
 <input class="form-input" type="text" id="f-tujuan" placeholder="Contoh: Berastagi, Danau Toba, dll.">
 </div>
-<!-- Catatan -->
 <div class="form-group full">
 <label>Catatan Tambahan</label>
 <textarea class="form-textarea" id="f-catatan" placeholder="Permintaan khusus, jumlah penumpang, kebutuhan lain..."></textarea>
 </div>
 </div>
-<!-- Submit -->
 <button class="form-submit" id="submitBtn" onclick="kirimPesan()">
 <svg width="20" height="20" viewBox="0 0 32 32" fill="white"><path d="M16 2.9A13.1 13.1 0 0 0 4.1 20.4L2 30l9.8-2.1a13.1 13.1 0 1 0 4.2-25Zm6 18.9c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2l-1 1.2c-.2.2-.3.3-.6.1a8.4 8.4 0 0 1-2.5-1.5 9.4 9.4 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.4 14.5 14.5 0 0 0 5.6 4.9c2.1.8 2.1.6 2.5.5a3.4 3.4 0 0 0 2.2-1.6 2.7 2.7 0 0 0 .2-1.6c-.1-.1-.4-.2-.6-.3Z"/></svg>
 Kirim Pesanan via WhatsApp
@@ -1202,7 +1255,6 @@ const selesai = document.getElementById('f-tgl-selesai').value;
 const lokasi  = document.getElementById('f-lokasi').value.trim();
 const tujuan  = document.getElementById('f-tujuan').value.trim();
 const catatan = document.getElementById('f-catatan').value.trim();
-// Validasi wajib
 if (!nama || !hp || !mobil || !supir || !mulai || !selesai || !lokasi) {
 alert('⚠️ Mohon lengkapi semua field yang wajib diisi (bertanda *)');
 return;
@@ -1211,15 +1263,12 @@ if (new Date(selesai) < new Date(mulai)) {
 alert('⚠️ Tanggal selesai tidak boleh lebih awal dari tanggal mulai.');
 return;
 }
-// Hitung durasi
 const diff = Math.ceil((new Date(selesai) - new Date(mulai)) / (1000 * 60 * 60 * 24));
 const durasi = diff === 0 ? '1 hari' : `${diff} hari`;
-// Format tanggal
 const fmt = (d) => {
 const dt = new Date(d);
 return dt.toLocaleDateString('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 };
-// Susun pesan WA
 const pesan = `
 🚗 *PEMESANAN MOBIL - ToberRentCar Siantar*
 ━━━━━━━━━━━━━━━━━━━━
@@ -1236,7 +1285,6 @@ ${catatan  ? `📝 *Catatan:* ${catatan}` : ''}
 ━━━━━━━━━━━━━━━━━━━━
 _Pesan dikirim melalui website ToberRentCar_
 `.trim();
-// Ganti nomor WA di sini ↓
 const nomorWA = '6281260929367';
 const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
 window.open(url, '_blank');
